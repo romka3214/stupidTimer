@@ -10,7 +10,7 @@ const DialogBox = ({ text, changeText }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             console.log(second);
-            changeText('Время проведенноё бесстолку = ' + second++ + ' секунд')
+            changeText('Время проведенноё без толку = ' + second++ + ' сек.')
         }, 1000);
         return () => clearInterval(interval);
     }, [second,changeText])
