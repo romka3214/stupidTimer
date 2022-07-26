@@ -5,19 +5,25 @@ import classes from './DialogBox.module.scss'
 
 
 const DialogBox = ({ text, changeText }) => {
-    let second = 1
+    let seconds
 
     useEffect(() => {
+        
+        localStorage.getItem('seconds') ?
+            seconds = localStorage.getItem('seconds')
+            :
+            seconds = 1
+
         const interval = setInterval(() => {
-            console.log(second);
-            changeText('Время проведенноё без толку = ' + second++ + ' сек.')
+            console.log(seconds);
+            changeText('Время проведенноё без толку = ' + seconds++ + ' сек.')
+            localStorage.setItem('seconds', seconds);
         }, 1000);
         return () => clearInterval(interval);
-    }, [second,changeText])
+    }, [])
 
 
     return (
-
         <div className={classes.DialogBox}>
             <p>
                 {text}
